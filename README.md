@@ -22,14 +22,12 @@ A clean, fast web dashboard for instantly visualising any NBA playerâ€™s seasonâ
 ---
 
 ## Table of Contents
-1. [Why We Built It](#why-we-built-it)
-2. [Key Features](#key-features)
-3. [Tech Stack](#tech-stack)
-4. [Try It Now](#try-it-now)
-5. [Roadmap](#roadmap)
-6. [Contributing](#contributing)
-7. [License](#license)
-8. [Team](#team)
+1. [Overview](#Overview)
+2. [Why We Built It](#why-we-built-it)
+3. [Key Features](#key-features)
+4. [Tech Stack](#tech-stack)
+5. [Try It Now](#try-it-now)
+
 
 ## Overview
 
