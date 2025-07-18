@@ -37,11 +37,6 @@ The application highlights these top NBA players:
 - **NBA Data**: NBA API for real-time statistics
 - **Authentication**: Flask sessions with password hashing
 
-## 📋 Prerequisites
-
-- Python 3.7 or higher
-- pip (Python package installer)
-
 ## 🚀 Installation & Setup
 
 ### 1. Clone the Repository
@@ -114,24 +109,6 @@ The application will be available at `http://localhost:5000`
 - Browse the home page carousel showcasing top NBA players
 - Click on any featured player to view their detailed stats
 
-## 🔧 Key Components
-
-### Database Schema
-```sql
-User Table:
-- id (Primary Key)
-- username (Unique)
-- password (Hashed)
-```
-
-### API Endpoints
-- `/` - Home page with featured players
-- `/signup` - User registration
-- `/login` - User authentication
-- `/logout` - Session termination
-- `/search` - Player search and statistics
-- `/compare` - Player comparison tool
-- `/autocomplete` - AJAX endpoint for search suggestions
 
 ### Data Sources
 - **NBA API**: Real-time player statistics and game logs
@@ -151,13 +128,6 @@ User Table:
 - `carouselSlide.js`: Manages image carousel functionality
 - `chat.js`: Prepared for future chatbot integration
 
-## 🔒 Security Features
-
-- **Password Hashing**: Secure password storage using Werkzeug
-- **Session Management**: Flask sessions for user authentication
-- **Input Validation**: Form validation and sanitization
-- **Environment Variables**: Sensitive data stored in .env file
-
 ## 📊 Statistics Features
 
 ### Player Individual Stats
@@ -175,46 +145,9 @@ User Table:
 - Visual chart comparisons
 
 
-## 🚨 Troubleshooting
-
-### Common Issues
-
-1. **Database Connection Error**
-   - Ensure the `instance/` directory exists
-   - Check SQLALCHEMY_DATABASE_URI in .env file
-
-2. **NBA API Timeout**
-   - The app includes fallback data for featured players
-   - Check internet connection for live data
-
-3. **Environment Variables Not Loading**
-   - Verify `.env` file exists in root directory
-   - Check SECRET_KEY is properly set
-
-4. **Port Already in Use**
-   - Change the port in app.py: `app.run(debug=True, port=5001)`
-
-### Development Mode
-To run in development mode with debug enabled:
-```bash
-export FLASK_ENV=development  # Linux/Mac
-set FLASK_ENV=development     # Windows
-python app.py
-```
-
-## 🎯 Future Enhancements
-
-- **ChatBot Integration**: OpenAI-powered basketball assistant
-- **Real-time Updates**: Live game scores and updates
-- **Advanced Analytics**: More detailed statistical analysis
-- **Team Statistics**: Team-level performance metrics
-- **Social Features**: User favorites and sharing
-
-## 📝 License
-
 This project is developed as part of ITSC 4155 Capstone course.
 
 
 ---
 
-**Note**: This application is designed for educational purposes and uses the NBA API for statistical data. All player images and statistics are for demonstration purposes.
+**Note**: This application is designed for educational purposes and uses the NBA API for statistical data.
