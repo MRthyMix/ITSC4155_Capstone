@@ -12,7 +12,7 @@ A Flask-based web application that provides comprehensive NBA player statistics,
 - **Responsive Design**: Desktop-optimized interface with Bootstrap
 - **Featured Players**: Spotlight on 12 top NBA players with their photos
 
-## 🎯 Featured Players
+## Featured Players
 
 The application highlights these top NBA players:
 - LeBron James (Lakers)
@@ -28,7 +28,7 @@ The application highlights these top NBA players:
 - Klay Thompson (Mavericks)
 - Paul George (76ers)
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 - **Backend**: Python Flask
 - **Database**: SQLite with SQLAlchemy ORM
@@ -37,7 +37,7 @@ The application highlights these top NBA players:
 - **NBA Data**: NBA API for real-time statistics
 - **Authentication**: Flask sessions with password hashing
 
-## 🚀 Installation & Setup
+## Installation & Setup
 
 ### 1. Clone the Repository
 ```bash
@@ -88,7 +88,7 @@ python3 app.py
 The application will be available at `http://localhost:5000`
 
 
-## 🎮 Usage
+## Usage
 
 ### 1. User Registration
 - Navigate to `/signup`
@@ -115,7 +115,7 @@ The application will be available at `http://localhost:5000`
 - **Local Database**: User authentication data
 - **Static Data**: Featured player information and images
 
-## 🎨 Frontend Features
+## Frontend Features
 
 ### Interactive Elements
 - **Autocomplete Search**: Real-time player name suggestions
@@ -128,7 +128,7 @@ The application will be available at `http://localhost:5000`
 - `carouselSlide.js`: Manages image carousel functionality
 - `chat.js`: Prepared for future chatbot integration
 
-## 📊 Statistics Features
+## Statistics Features
 
 ### Player Individual Stats
 - Points per game
