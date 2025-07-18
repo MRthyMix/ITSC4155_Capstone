@@ -18,14 +18,19 @@ load_dotenv()
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("SQLALCHEMY_DATABASE_URI", 'sqlite:///users.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
+app.config['SECRET_KEY'] = os.getenv("SECRET_KEY", "fallback-secret-key-for-production")
 db = SQLAlchemy(app)
 
 # Filter NBA API to only featured players
 def get_filtered_players():
-    all_nba_players = players.get_players()
-    featured_names = [p['full_name'] for p in FEATURED_PLAYERS]
-    return [p for p in all_nba_players if p['full_name'] in featured_names]
+    try:
+        all_nba_players = players.get_players()
+        featured_names = [p['full_name'] for p in FEATURED_PLAYERS]
+        return [p for p in all_nba_players if p['full_name'] in featured_names]
+    except Exception as e:
+        print(f"Error loading NBA players: {e}")
+        # Return featured players as fallback
+        return [{'id': p['id'], 'full_name': p['full_name']} for p in FEATURED_PLAYERS]
 
 ALL_PLAYERS = get_filtered_players()
 
@@ -34,8 +39,11 @@ class User(db.Model):
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(128), nullable=False)
 
-with app.app_context():
-    db.create_all()
+try:
+    with app.app_context():
+        db.create_all()
+except Exception as e:
+    print(f"Database initialization error: {e}")
 
 def login_required(f):
     @wraps(f)
