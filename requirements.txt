@@ -1,12 +1,7 @@
 flask
 nba_api
 requests
-pandas
 sqlalchemy
 flask_sqlalchemy
 gunicorn
-matplotlib
-pytest
-openai
 python-dotenv
-dotenv

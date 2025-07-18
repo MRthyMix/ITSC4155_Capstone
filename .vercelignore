@@ -29,3 +29,5 @@ tests/
 .env.*.local
 README.md
 CLAUDE.md
+static/images/
+node_modules/
