@@ -7,17 +7,16 @@ from flask_sqlalchemy import SQLAlchemy
 from functools import wraps
 from dotenv import load_dotenv
 import os
-import openai
-from openai import OpenAI
+# import openai
+# from openai import OpenAI
 from dotenv import load_dotenv
 
 load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("SQLALCHEMY_DATABASE_URI", 'sqlite:///users.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.secret_key = os.getenv("SECRET_KEY")
 app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 db = SQLAlchemy(app)
 
@@ -222,27 +221,27 @@ def compare_results():
                     stats1_json=stats1.to_dict(orient='records'),
                     stats2_json=stats2.to_dict(orient='records'))
 
+# Chatbot
+# client = OpenAI()
 
-client = OpenAI()
+# @app.route('/chat', methods=['POST'])
+# def chatbot():
+#     data = request.get_json()
+#     messages = data.get("messages")
 
-@app.route('/chat', methods=['POST'])
-def chatbot():
-    data = request.get_json()
-    messages = data.get("messages")
+#     if not messages or not isinstance(messages, list):
+#         return jsonify({'response': 'Invalid message format.'}), 400
 
-    if not messages or not isinstance(messages, list):
-        return jsonify({'response': 'Invalid message format.'}), 400
-
-    try:
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=messages
-        )
-        reply = response.choices[0].message.content.strip()
-        return jsonify({'response': reply})
-    except Exception as e:
-        print(f"OpenAI API error: {e}")
-        return jsonify({'response': 'Sorry, something went wrong with the assistant.'}), 500
+#     try:
+#         response = client.chat.completions.create(
+#             model="gpt-3.5-turbo",
+#             messages=messages
+#         )
+#         reply = response.choices[0].message.content.strip()
+#         return jsonify({'response': reply})
+#     except Exception as e:
+#         print(f"OpenAI API error: {e}")
+#         return jsonify({'response': 'Sorry, something went wrong with the assistant.'}), 500
 
 
 
