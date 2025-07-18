@@ -9,7 +9,7 @@ A Flask-based web application that provides comprehensive NBA player statistics,
 - **Player Comparison**: Side-by-side comparison of two players' recent performance
 - **Interactive Charts**: Visual representation of player performance using Chart.js
 - **User Authentication**: Secure user registration and login system
-- **Responsive Design**: Mobile-friendly interface with Bootstrap
+- **Responsive Design**: Desktop-optimized interface with Bootstrap
 - **Featured Players**: Spotlight on 12 top NBA players with their photos
 
 ## 🎯 Featured Players
