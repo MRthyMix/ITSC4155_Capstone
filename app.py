@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
-from nba_api.stats.static import players
-from nba_api.stats.endpoints import commonplayerinfo, playercareerstats, playergamelog
+from player_data import get_players, find_players_by_full_name, find_player_by_id, get_player_career_stats, get_player_game_logs
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
@@ -20,7 +19,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 db = SQLAlchemy(app)
 
-ALL_PLAYERS = players.get_players()
+ALL_PLAYERS = get_players()
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
