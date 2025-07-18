@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
-from player_data import get_players, find_players_by_full_name, find_player_by_id, get_player_career_stats, get_player_game_logs
+from nba_api.stats.static import players
+from nba_api.stats.endpoints import commonplayerinfo, playercareerstats, playergamelog
+from player_data import FEATURED_PLAYERS
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
@@ -19,7 +21,13 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 db = SQLAlchemy(app)
 
-ALL_PLAYERS = get_players()
+# Filter NBA API to only featured players
+def get_filtered_players():
+    all_nba_players = players.get_players()
+    featured_names = [p['full_name'] for p in FEATURED_PLAYERS]
+    return [p for p in all_nba_players if p['full_name'] in featured_names]
+
+ALL_PLAYERS = get_filtered_players()
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -119,7 +127,7 @@ def player_stats():
     if not player_name:
         return redirect(url_for("home_page"))
 
-    match = next((p for p in players.get_players()
+    match = next((p for p in ALL_PLAYERS
                 if player_name.lower() in p["full_name"].lower()), None)
     if not match:
         return render_template("index.html",
@@ -128,8 +136,8 @@ def player_stats():
 
     # Fetch the last 5 games
     game_log = playergamelog.PlayerGameLog(
-    player_id=player_id,
-    season_type_all_star='Playoffs'
+        player_id=player_id,
+        season_type_all_star='Playoffs'
     ).get_data_frames()[0]
     last_5_games = game_log[['GAME_DATE', 'PTS', 'AST', 'REB', 'STL', 'BLK', 'FG3M']].dropna().head(5)
 
@@ -142,11 +150,10 @@ def player_stats():
     blocks_per_game = last_5_games['BLK'].tolist()
     three_pointers_made = last_5_games['FG3M'].tolist()
 
-
     # Get player bio
     info = commonplayerinfo.CommonPlayerInfo(player_id=player_id)
-    bio_df = info.get_data_frames()[0]          
-    birth_str = bio_df.loc[0, "BIRTHDATE"]        
+    bio_df = info.get_data_frames()[0]
+    birth_str = bio_df.loc[0, "BIRTHDATE"]
     birth_str = birth_str[:10]                    
     try:
         bdate = datetime.strptime(birth_str, "%Y-%m-%d").date()

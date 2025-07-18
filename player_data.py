@@ -1,7 +1,7 @@
-# Custom player database to replace NBA API
-# Contains key players and their basic information
+# Featured players list - only these players will be available
+# This limits the NBA API data to just these key players
 
-PLAYERS = [
+FEATURED_PLAYERS = [
     {
         'id': 2544,
         'full_name': 'LeBron James',
@@ -182,31 +182,10 @@ MOCK_STATS = {
     'fg3_pct': 0.410
 }
 
-def get_players():
-    """Returns list of all players"""
-    return PLAYERS
+def get_featured_players():
+    """Returns list of featured players only"""
+    return FEATURED_PLAYERS
 
-def find_players_by_full_name(name):
-    """Find players by full name (case insensitive)"""
-    return [p for p in PLAYERS if name.lower() in p['full_name'].lower()]
-
-def find_player_by_id(player_id):
-    """Find player by ID"""
-    for player in PLAYERS:
-        if player['id'] == player_id:
-            return player
-    return None
-
-def get_player_career_stats(player_id):
-    """Mock function to return career stats"""
-    return MOCK_STATS
-
-def get_player_game_logs(player_id, season='2023-24'):
-    """Mock function to return game logs"""
-    return [
-        {'game_date': '2024-01-15', 'pts': 28, 'reb': 8, 'ast': 6, 'opp': 'GSW'},
-        {'game_date': '2024-01-12', 'pts': 32, 'reb': 5, 'ast': 9, 'opp': 'LAC'},
-        {'game_date': '2024-01-10', 'pts': 22, 'reb': 10, 'ast': 8, 'opp': 'MIA'},
-        {'game_date': '2024-01-08', 'pts': 35, 'reb': 7, 'ast': 4, 'opp': 'BOS'},
-        {'game_date': '2024-01-05', 'pts': 18, 'reb': 12, 'ast': 11, 'opp': 'NYK'}
-    ]
+def is_featured_player(player_name):
+    """Check if player is in featured list"""
+    return any(player_name.lower() in p['full_name'].lower() for p in FEATURED_PLAYERS)
