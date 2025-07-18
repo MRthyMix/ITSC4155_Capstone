@@ -46,7 +46,7 @@ The application highlights these top NBA players:
 
 ### 1. Clone the Repository
 ```bash
-git clone <repository-url>
+git clone https://github.com/MRthyMix/ITSC4155_Capstone
 cd ITSC4155_Capstone
 ```
 
@@ -77,40 +77,21 @@ SQLALCHEMY_DATABASE_URI=sqlite:///users.db
 The database will be automatically created when you first run the application.
 
 ### 6. Run the Application
+
+**Windows:**
 ```bash
+py app.py
+# or
 python app.py
+```
+
+**macOS:**
+```bash
+python3 app.py
 ```
 
 The application will be available at `http://localhost:5000`
 
-## 📁 Project Structure
-
-```
-ITSC4155_Capstone/
-├── app.py                 # Main Flask application
-├── app_utils.py          # Utility functions
-├── player_data.py        # Featured players data
-├── requirements.txt      # Python dependencies
-├── .env                  # Environment variables
-├── instance/
-│   └── users.db         # SQLite database
-├── templates/           # HTML templates
-│   ├── home.html
-│   ├── login.html
-│   ├── signup.html
-│   ├── search.html
-│   ├── index.html
-│   └── compare_players.html
-├── static/              # Static files
-│   ├── css/
-│   │   └── home.css
-│   ├── js/
-│   │   ├── autocomplete.js
-│   │   ├── carouselSlide.js
-│   │   └── chat.js
-│   └── images/          # Player photos
-└── tests/               # Test files
-```
 
 ## 🎮 Usage
 
@@ -193,18 +174,6 @@ User Table:
 - Recent performance metrics
 - Visual chart comparisons
 
-## 🧪 Testing
-
-Run the test suite:
-```bash
-pytest
-```
-
-Test files are located in the `tests/` directory and cover:
-- Player search functionality
-- Autocomplete features
-- Database operations
-- Authentication systems
 
 ## 🚨 Troubleshooting
 
@@ -245,17 +214,6 @@ python app.py
 
 This project is developed as part of ITSC 4155 Capstone course.
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run tests
-5. Submit a pull request
-
-## 📞 Support
-
-For questions or issues, please refer to the project documentation or contact the development team.
 
 ---
 
