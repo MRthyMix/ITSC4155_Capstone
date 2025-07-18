@@ -115,36 +115,6 @@ The application will be available at `http://localhost:5000`
 - **Local Database**: User authentication data
 - **Static Data**: Featured player information and images
 
-## Frontend Features
-
-### Interactive Elements
-- **Autocomplete Search**: Real-time player name suggestions
-- **Image Carousel**: Rotating display of featured players
-- **Responsive Charts**: Dynamic visualization of player statistics
-- **Mobile-Friendly**: Bootstrap-based responsive design
-
-### JavaScript Modules
-- `autocomplete.js`: Handles search suggestions
-- `carouselSlide.js`: Manages image carousel functionality
-- `chat.js`: Prepared for future chatbot integration
-
-## Statistics Features
-
-### Player Individual Stats
-- Points per game
-- Assists per game
-- Rebounds per game
-- Steals per game
-- Blocks per game
-- Three-pointers made
-- Last 5 playoff games visualization
-
-### Player Comparison
-- Side-by-side statistical comparison
-- Recent performance metrics
-- Visual chart comparisons
-
-
 This project is developed as part of ITSC 4155 Capstone course.
 
 
